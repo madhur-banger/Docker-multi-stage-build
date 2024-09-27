@@ -13,14 +13,25 @@ This project is a DevOps Metrics Dashboard built with Python and Flask, designed
 
 ```plaintext
 .
-├── Dockerfile                     # Dockerfile without multi-stage build
-├── Dockerfile-with-multistage     # Dockerfile with multi-stage build
-├── app                            # Application folder
-│   ├── __init__.py                # Flask app initialization
-│   ├── metrics.py                 # Metric collection logic
-│   └── templates
-│       └── index.html             # HTML template for the dashboard
-└── requirements.txt               # Project dependencies
+├── Dockerfile-with-multistage
+│   ├── Dockerfile
+│   ├── backend/
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   └── frontend/
+│       ├── index.html
+│       └── script.js
+│
+├── Dockerfile-without-multistage
+│   ├── Dockerfile
+│   ├── backend/
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   └── frontend/
+│       ├── index.html
+│       └── script.js
+│
+└── README.md
 ```
 ## How to Run
 
@@ -35,13 +46,13 @@ This project is a DevOps Metrics Dashboard built with Python and Flask, designed
     - For without multi-stage build:
 
         ```bash
-        docker build -t devops-dashboard -f Dockerfile .
+        docker build -t devops-dashboard -f Dockerfile-without-multistage/Dockerfile
         ```
 
     - For with multi-stage build:
 
         ```bash
-        docker build -t devops-dashboard -f Dockerfile-with-multistage .
+        docker build -t devops-dashboard -f Dockerfile-with-multistage/Dockerfile .
         ```
 
 3. **Run the Docker container**:
